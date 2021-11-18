@@ -5,7 +5,7 @@
     <PackageId>Hangfire.Redis.StackExchange2</PackageId>
     <IsPackable>true</IsPackable>
     <Version>1.8.6</Version>
-    <PackageVersion>1.8.5</PackageVersion>
+    <PackageVersion>1.8.6</PackageVersion>
     <Authors>Marco Casamento and contributors</Authors>
     <owners>marcocasamento</owners>
     <!--
@@ -25,7 +25,7 @@
     </Summary>
     <PackageReleaseNotes>
       1.8.6 
-	  - Update packages Hangfire.Core to 1.7.27 and StackExchange.Redis to 2.2.88
+      - Update packages Hangfire.Core to 1.7.27 and StackExchange.Redis to 2.2.88
       1.8.5
       - Speed up Recurring jobs Fetching (thanks to developingjim)
       1.8.4

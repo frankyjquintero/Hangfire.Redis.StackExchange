@@ -33,6 +33,7 @@ namespace Hangfire.Redis
         private readonly RedisStorageOptions _options;
         private readonly IConnectionMultiplexer _connectionMultiplexer;
         private readonly RedisSubscription _subscription;
+        private readonly ConfigurationOptions _redisOptions;
 
         public RedisStorage()
             : this("localhost:6379")
@@ -44,7 +45,8 @@ namespace Hangfire.Redis
             _options = options ?? new RedisStorageOptions();
 
             _connectionMultiplexer = connectionMultiplexer ?? throw new ArgumentNullException(nameof(connectionMultiplexer));
-            
+            _redisOptions = ConfigurationOptions.Parse(_connectionMultiplexer.Configuration);
+
             _subscription = new RedisSubscription(this, _connectionMultiplexer.GetSubscriber());
         }
 
@@ -52,11 +54,11 @@ namespace Hangfire.Redis
         {
             if (connectionString == null) throw new ArgumentNullException(nameof(connectionString));
 
-            var redisOptions = ConfigurationOptions.Parse(connectionString);
+            _redisOptions = ConfigurationOptions.Parse(connectionString);
 
             _options = options ?? new RedisStorageOptions
             {
-                Db = redisOptions.DefaultDatabase ?? 0
+                Db = _redisOptions.DefaultDatabase ?? 0
             };
 
             _connectionMultiplexer = ConnectionMultiplexer.Connect(connectionString);
@@ -66,11 +68,11 @@ namespace Hangfire.Redis
         public string ConnectionString => _connectionMultiplexer.Configuration;
 
         public int Db => _options.Db;
-        
+
         internal int SucceededListSize => _options.SucceededListSize;
 
         internal int DeletedListSize => _options.DeletedListSize;
-        
+
         internal string SubscriptionChannel => _subscription.Channel;
 
         internal string[] LifoQueues => _options.LifoQueues;
@@ -131,7 +133,8 @@ namespace Hangfire.Redis
 
         public override string ToString()
         {
-            return string.Format("redis://{0}/{1}", ConnectionString, Db);
+            var connectionString = _redisOptions.ToString(includePassword: false);
+            return string.Format("redis://{0}/{1}", connectionString, Db);
         }
 
         internal string GetRedisKey([NotNull] string key)

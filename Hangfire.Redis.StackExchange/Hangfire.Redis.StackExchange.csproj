@@ -2,18 +2,18 @@
 
   <PropertyGroup>
     <TargetFrameworks>net461;netstandard2.0</TargetFrameworks>
-    <PackageId>Hangfire.Redis.StackExchange2</PackageId>
+    <PackageId>Hangfire.Redis.StackExchange3</PackageId>
     <IsPackable>true</IsPackable>
-    <Version>1.8.6</Version>
+    <Version>1.8.6.1</Version>
     <PackageVersion>1.8.6</PackageVersion>
-    <Authors>Marco Casamento and contributors</Authors>
+    <Authors>Franky J. Quintero Rangel, Marco Casamento, Murat Tufekci  and contributors</Authors>
     <owners>marcocasamento</owners>
     <!--
       https://docs.microsoft.com/en-us/dotnet/articles/core/tools/project-json-to-csproj
       There is no equivalent for the owners element in MSBuild. 
     -->
     <Product>Hangfire Redis Storage</Product>
-    <PackageProjectUrl>https://github.com/frankyjquintero/Hangfire.Redis.StackExchange</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/mtufe-delhaize/Hangfire.Redis.StackExchange</PackageProjectUrl>
     <Description>
       Hangfire Redis Storage Based on Redis.StackExchange
       See http://hangfire.io/ for some more info on the main project
@@ -23,7 +23,8 @@
       Hangfire Redis storage use Redis to persists Job information, through Redis.StackExchange library.
       It also supports Batches (Pro Feature)
     </Summary>
-    <PackageReleaseNotes>
+    <PackageReleaseNotes>1.8.6.1
+      - Hide Password added from main branch.
       1.8.6 
       - Update packages Hangfire.Core to 1.7.27 and StackExchange.Redis to 2.2.88
       1.8.5
@@ -66,15 +67,17 @@
       1.6.5
       - .Net Core Support (thanks to Stefan Polyanszky)
       - Aligned dependency to Hangfire.Core
-    </PackageReleaseNotes>
+</PackageReleaseNotes>
     <PackageTags>Hangfire Redis</PackageTags>
-    <RepositoryUrl>https://github.com/frankyjquintero/Hangfire.Redis.StackExchange</RepositoryUrl>
+    <RepositoryUrl>https://github.com/mtufe-delhaize/Hangfire.Redis.StackExchange</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>Hangfire_Redis_StackExchange.snk</AssemblyOriginatorKeyFile>
     <PackageLicenseExpression>LGPL-3.0-or-later</PackageLicenseExpression>
-    <DelaySign>false</DelaySign>    
+    <DelaySign>false</DelaySign>
+    <Company>Franky J. Quintero Rangel, Marco Casamento, Murat Tufekci and contributors</Company>
+    <AssemblyName>Hangfire.Redis.StackExchange</AssemblyName>    
     <!--<SignAssembly>True</SignAssembly>
     <AssemblyOriginatorKeyFile>../Hangfire_Redis_StackExchange.snk</AssemblyOriginatorKeyFile>-->
   </PropertyGroup>
